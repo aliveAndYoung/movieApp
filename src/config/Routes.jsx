@@ -23,6 +23,7 @@ const AppRoutes = () => {
     const { isLoggedIn } = useIsLoggedIn();
     const myRoutes = createBrowserRouter([
         { path: "/login", element: <AuthForm /> },
+        
         {
             path: "/",
             element: isLoggedIn ? <Layout /> : <Navigate to="/login" />,
@@ -31,8 +32,10 @@ const AppRoutes = () => {
                 {
                     path: "/:category",
                     element: <Catalog />,
-                    children: [{ path: "/:category/:id", element: <Detail /> }],
+                    
                 },
+                { path: "/:category/:id", element: <Detail /> },
+                { path: "/:category/search/:keyword", element: <Catalog /> }
             ],
         },
     ]);
